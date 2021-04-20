@@ -25,9 +25,9 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div>
-        <main>{children}</main>
-        <footer>
+      <div className="container mx-auto">
+        <main className="mt-5">{children}</main>
+        <footer className="text-gray-400 flex justify-center text-sm mt-5">
           © {new Date().getFullYear()}, Built with
           {` `}
           <a href="https://www.gatsbyjs.com">Gatsby</a>

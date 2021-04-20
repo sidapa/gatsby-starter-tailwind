@@ -4,12 +4,14 @@ import { Link } from "gatsby"
 
 const Header = ({ siteTitle }) => (
   <header>
-    <div>
-      <h1>
-        <Link to="/">
-          {siteTitle}
-        </Link>
-      </h1>
+    <div className="w-full bg-indigo-600 text-white py-5">
+      <nav className="container mx-auto">
+        <h1 className="text-4xl">
+          <Link to="/">
+            {siteTitle}
+          </Link>
+        </h1>
+      </nav>
     </div>
   </header>
 )
