@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: testweb:${DOCKER_TAG:-latest}
+    volumes:
+      - .:/web
+      - '/web/node_modules'
+    ports:
+      - "8000:8000"

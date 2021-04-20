@@ -1,0 +1,29 @@
+FROM node:alpine
+
+RUN \
+  apk add --no-cache python3 make g++ && \
+  apk add vips-dev fftw-dev automake autoconf \
+  libtool nasm zsh git curl \
+  --update-cache
+
+RUN \
+  sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" \
+  && echo "export PROMPT=Docker$PROMPT" >> ~/.zshrc
+
+
+RUN mkdir /web && chown node:node /web
+WORKDIR /web
+
+USER node
+
+COPY package.json /web/package.json
+COPY yarn.lock /web/yarn.lock
+
+RUN yarn install
+
+VOLUME /web
+COPY . /web
+
+EXPOSE 8000
+
+CMD ["yarn", "develop"]
